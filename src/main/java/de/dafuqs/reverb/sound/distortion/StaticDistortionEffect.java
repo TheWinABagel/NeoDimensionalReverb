@@ -1,11 +1,11 @@
 package de.dafuqs.reverb.sound.distortion;
 
-import com.mojang.serialization.*;
-import com.mojang.serialization.codecs.*;
-import net.minecraft.client.*;
-import net.minecraft.client.sound.*;
-import net.minecraft.util.*;
-import org.lwjgl.openal.*;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.resources.sounds.SoundInstance;
+import net.minecraft.resources.ResourceLocation;
+import org.lwjgl.openal.EXTEfx;
 
 /**
  * A Distortion effect controls
@@ -46,7 +46,7 @@ public class StaticDistortionEffect extends DistortionEffect {
 	}
 	
 	@Override
-	public boolean shouldIgnore(Identifier identifier) {
+	public boolean shouldIgnore(ResourceLocation identifier) {
 		return identifier.getPath().contains("ui.")
 				|| identifier.getPath().contains("music.")
 				|| identifier.getPath().contains("block.lava.pop")
@@ -56,32 +56,32 @@ public class StaticDistortionEffect extends DistortionEffect {
 	}
 	
 	@Override
-	public boolean isEnabled(MinecraftClient client, SoundInstance soundInstance) {
+	public boolean isEnabled(Minecraft client, SoundInstance soundInstance) {
 		return this.enabled;
 	}
 	
 	@Override
-	public float getEdge(MinecraftClient client, SoundInstance soundInstance) {
+	public float getEdge(Minecraft client, SoundInstance soundInstance) {
 		return this.edge;
 	}
 	
 	@Override
-	public float getGain(MinecraftClient client, SoundInstance soundInstance) {
+	public float getGain(Minecraft client, SoundInstance soundInstance) {
 		return this.gain;
 	}
 	
 	@Override
-	public float getLowpassCutoff(MinecraftClient client, SoundInstance soundInstance) {
+	public float getLowpassCutoff(Minecraft client, SoundInstance soundInstance) {
 		return this.lowpassCutoff;
 	}
 	
 	@Override
-	public float getEQCenter(MinecraftClient client, SoundInstance soundInstance) {
+	public float getEQCenter(Minecraft client, SoundInstance soundInstance) {
 		return this.eqCenter;
 	}
 	
 	@Override
-	public float getEQBandWidth(MinecraftClient client, SoundInstance soundInstance) {
+	public float getEQBandWidth(Minecraft client, SoundInstance soundInstance) {
 		return this.eqBandWidth;
 	}
 	
